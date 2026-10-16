@@ -15,6 +15,7 @@ import { Screen6Onboarding } from './screens/Screen6Onboarding';
 import { Screen7History } from './screens/Screen7History';
 import { Screen8Config } from './screens/Screen8Config';
 import { useBraceletBridge } from './bracelet/bridge';
+import { isAppTheme, type AppTheme } from './theme';
 
 const BraceletPrototype = React.lazy(() =>
   import('./bracelet/BraceletPrototype').then((module) => ({
@@ -35,6 +36,10 @@ export default function App() {
 }
 
 function ApplicationApp() {
+  const [appTheme, setAppTheme] = useState<AppTheme>(() => {
+    const savedTheme = window.localStorage.getItem('aivra-app-theme');
+    return isAppTheme(savedTheme) ? savedTheme : 'midnight';
+  });
   const [currentScreen, setCurrentScreen] = useState<ScreenId>(
     '1. Inicio - Estado de Pulsera y Dashboard'
   );
@@ -62,6 +67,15 @@ function ApplicationApp() {
     setCurrentScreen(screen);
     setHistoryStack((prev) => [...prev, screen]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const changeAppTheme = (theme: AppTheme) => {
+    setAppTheme(theme);
+    try {
+      window.localStorage.setItem('aivra-app-theme', theme);
+    } catch (error) {
+      console.error('No se pudo guardar la preferencia de color de fondo.', error);
+    }
   };
 
   // Keyboard shortcut (Alt + S) to toggle quick screen switcher for easy reviewing
@@ -102,7 +116,10 @@ function ApplicationApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#060e20] text-[#dae2fd] flex flex-col justify-start">
+    <div
+      className="aivra-app min-h-screen bg-surface text-on-surface flex flex-col justify-start"
+      data-theme={appTheme}
+    >
       {/* Desktop / Tester Quick Access Indicator */}
       <div className="hidden lg:flex fixed top-3 right-4 z-50 items-center gap-2">
         <button
@@ -186,7 +203,11 @@ function ApplicationApp() {
           <Screen7History onNavigate={navigateTo} />
         )}
         {currentScreen === '8. Configuración de Pulsera y Palabra Clave' && (
-          <Screen8Config onNavigate={navigateTo} />
+          <Screen8Config
+            onNavigate={navigateTo}
+            theme={appTheme}
+            onThemeChange={changeAppTheme}
+          />
         )}
       </div>
     </div>

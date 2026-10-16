@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { ScreenId } from '../types';
 import { Header } from '../components/Header';
 import { Navigation } from '../components/Navigation';
+import { APP_THEMES, type AppTheme } from '../theme';
 
 interface Screen8Props {
   onNavigate: (screen: ScreenId, transition?: 'none' | 'push' | 'push_back' | 'slide_up') => void;
+  theme: AppTheme;
+  onThemeChange: (theme: AppTheme) => void;
 }
 
-export const Screen8Config: React.FC<Screen8Props> = ({ onNavigate }) => {
+export const Screen8Config: React.FC<Screen8Props> = ({ onNavigate, theme, onThemeChange }) => {
   const [hapticIntensity, setHapticIntensity] = useState<'Suave' | 'Fuerte' | 'Máxima Emergencia'>('Máxima Emergencia');
   const [voiceKeywordEnabled, setVoiceKeywordEnabled] = useState(true);
   const [secretPhrase, setSecretPhrase] = useState('Código Centinela 105');
@@ -77,6 +80,59 @@ export const Screen8Config: React.FC<Screen8Props> = ({ onNavigate }) => {
           </div>
 
           <div className="px-4 flex flex-col gap-4 mt-2">
+            <section
+              className="rounded-xl bg-surface-container p-4 shadow-md flex flex-col gap-3 border border-surface-container-highest/40"
+              aria-labelledby="appearance-title"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                  <span className="material-symbols-outlined text-[20px]">palette</span>
+                </div>
+                <div>
+                  <h2 id="appearance-title" className="font-headline-sm text-headline-sm text-on-surface font-semibold">
+                    Color de fondo
+                  </h2>
+                  <p className="font-label-sm text-label-sm text-on-surface-variant text-[11px]">
+                    Personaliza la apariencia de la aplicación
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2" role="group" aria-label="Opciones de color de fondo">
+                {(Object.entries(APP_THEMES) as [AppTheme, (typeof APP_THEMES)[AppTheme]][]).map(
+                  ([themeId, option]) => {
+                    const isSelected = theme === themeId;
+
+                    return (
+                      <button
+                        key={themeId}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => onThemeChange(themeId)}
+                        className={`flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-left transition-colors ${
+                          isSelected
+                            ? 'border-secondary bg-surface-container-high text-on-surface'
+                            : 'border-surface-container-high hover:border-outline text-on-surface-variant'
+                        }`}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="h-5 w-5 shrink-0 rounded-full border border-white/20"
+                          style={{ backgroundColor: option.swatch }}
+                        />
+                        <span className="font-label-sm text-label-sm font-semibold">{option.label}</span>
+                        {isSelected && (
+                          <span className="material-symbols-outlined ml-auto text-[16px] text-secondary">
+                            check
+                          </span>
+                        )}
+                      </button>
+                    );
+                  },
+                )}
+              </div>
+            </section>
+
             {/* Hardware Status Card */}
             <div className="rounded-xl bg-surface-container p-4 shadow-md flex flex-col gap-4 relative overflow-hidden border border-surface-container-highest/40">
               <div className="absolute -right-10 -bottom-10 w-36 h-36 rounded-full bg-secondary/5 blur-2xl pointer-events-none"></div>

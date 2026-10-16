@@ -21,6 +21,9 @@ View your app in AI Studio: https://ai.studio/apps/9d15823e-6fc7-4bd0-887c-ae802
 
 ## Prototipo independiente de la pulsera
 
+En el aplicativo, abre **Ajustes de Periférico** desde el menú del perfil para elegir
+entre los fondos Azul noche, Grafito, Violeta y Bosque. La selección se guarda en este navegador.
+
 Con el servidor local en marcha, abre `http://localhost:3000/pulsera` para explorar la pulsera
 interactiva en 3D. Puedes girar el modelo, cambiar entre tres acabados, probar SOS y ajustar la batería simulada.
 
