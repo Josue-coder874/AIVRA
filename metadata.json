@@ -1,0 +1,6 @@
+{
+  "name": "AIVRA Sentinel",
+  "description": "Plataforma de protección personal y telemetría táctica para pulseras de seguridad inteligente con alerta SOS, corredor seguro y red de guardianes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

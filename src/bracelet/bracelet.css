@@ -1,0 +1,1268 @@
+.bracelet-app {
+  --ink: #f4ede9;
+  --muted: #a79c99;
+  --faint: #776f6e;
+  --panel: rgba(32, 30, 32, 0.78);
+  --border: rgba(234, 214, 204, 0.12);
+  --accent: #f4a08e;
+  --accent-bright: #ffb9a7;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 74% 43%, rgba(138, 81, 70, 0.14), transparent 36%),
+    radial-gradient(ellipse at 7% 88%, rgba(106, 77, 72, 0.12), transparent 32%),
+    #141416;
+  font-family: Inter, "Plus Jakarta Sans", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.bracelet-app * {
+  box-sizing: border-box;
+}
+
+.bracelet-topbar {
+  width: min(1320px, calc(100% - 80px));
+  height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.bracelet-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #f2e9e5;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.bracelet-brand em {
+  color: #c18f81;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  margin-left: 3px;
+}
+
+.bracelet-brand-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-bright);
+  border: 1px solid rgba(244, 160, 142, 0.35);
+  border-radius: 11px;
+  background: rgba(244, 160, 142, 0.08);
+}
+
+.bracelet-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.bracelet-prototype-tag,
+.bracelet-app-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-decoration: none;
+}
+
+.bracelet-prototype-tag {
+  color: #d5aaa0;
+}
+
+.bracelet-prototype-tag > span,
+.bracelet-live-dot,
+.bracelet-link-dot {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #8ed6ae;
+  box-shadow: 0 0 12px rgba(142, 214, 174, 0.62);
+}
+
+.bracelet-app-link {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: #ded4cf;
+  font-size: 11px;
+  letter-spacing: 0;
+  transition: background 160ms ease, border 160ms ease;
+}
+
+.bracelet-app-link:hover {
+  border-color: rgba(244, 160, 142, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bracelet-layout {
+  width: min(1190px, calc(100% - 80px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(340px, 0.82fr) minmax(480px, 1.18fr);
+  gap: clamp(48px, 8vw, 118px);
+  align-items: center;
+  padding: 44px 0 38px;
+}
+
+.bracelet-copy {
+  padding: 12px 0 0;
+}
+
+.bracelet-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c5a29a;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.bracelet-eyebrow-line {
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.bracelet-copy h1 {
+  margin: 22px 0 13px;
+  color: #f2e9e5;
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: clamp(37px, 4.4vw, 58px);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 1.07;
+}
+
+.bracelet-copy h1 span {
+  color: #d6a99c;
+}
+
+.bracelet-intro {
+  max-width: 425px;
+  margin: 0;
+  color: #a79d99;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.bracelet-alert-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 27px;
+  padding: 14px;
+  border: 1px solid rgba(234, 214, 204, 0.1);
+  border-radius: 14px;
+  background: linear-gradient(105deg, rgba(47, 43, 43, 0.85), rgba(30, 29, 31, 0.9));
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.bracelet-alert-card.is-alerting {
+  border-color: rgba(255, 126, 133, 0.42);
+  background: linear-gradient(105deg, rgba(76, 42, 45, 0.8), rgba(30, 29, 31, 0.94));
+}
+
+.bracelet-alert-icon,
+.bracelet-bluetooth-icon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: var(--accent-bright);
+  background: rgba(244, 160, 142, 0.1);
+}
+
+.is-alerting .bracelet-alert-icon {
+  color: #ff959b;
+  background: rgba(255, 101, 111, 0.12);
+}
+
+.bracelet-alert-copy,
+.bracelet-link-heading > div:nth-child(2) {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bracelet-card-kicker {
+  color: #a79791;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.bracelet-alert-copy strong,
+.bracelet-link-heading strong {
+  overflow: hidden;
+  color: #f1e9e5;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bracelet-alert-copy > span:last-child {
+  color: #a79d99;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.bracelet-cancel-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255, 126, 133, 0.28);
+  border-radius: 9px;
+  color: #ff9fa3;
+  background: rgba(255, 126, 133, 0.08);
+  cursor: pointer;
+}
+
+.bracelet-controls {
+  margin-top: 14px;
+}
+
+.bracelet-sos-button {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #e99a89;
+  border-radius: 11px;
+  color: #261a19;
+  background: linear-gradient(110deg, #f6b3a0, #df8a7a);
+  box-shadow: 0 8px 25px rgba(213, 126, 106, 0.14);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.bracelet-sos-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 29px rgba(213, 126, 106, 0.22);
+}
+
+.bracelet-sos-button.active {
+  border-color: rgba(255, 154, 161, 0.5);
+  color: #ffe1de;
+  background: #713f43;
+}
+
+.bracelet-control-hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0 0;
+  color: #847d7b;
+  font-size: 9px;
+}
+
+.bracelet-link-card {
+  margin-top: 21px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.bracelet-link-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.bracelet-bluetooth-icon {
+  width: 35px;
+  height: 35px;
+  color: #b0a7a4;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.bracelet-bluetooth-icon.connected {
+  color: #9fe1bd;
+  background: rgba(117, 199, 151, 0.1);
+}
+
+.bracelet-link-dot {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  background: #716969;
+  box-shadow: none;
+}
+
+.bracelet-link-dot.connected {
+  background: #8ed6ae;
+  box-shadow: 0 0 10px rgba(142, 214, 174, 0.62);
+}
+
+.bracelet-link-card > p {
+  margin: 11px 0 12px;
+  color: #938987;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.bracelet-link-button {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(233, 185, 170, 0.28);
+  border-radius: 9px;
+  color: #e4b7a9;
+  background: rgba(244, 160, 142, 0.07);
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.bracelet-link-button:hover {
+  background: rgba(244, 160, 142, 0.13);
+}
+
+.bracelet-link-button.is-connected {
+  border-color: rgba(142, 214, 174, 0.22);
+  color: #a4d9b9;
+  background: rgba(142, 214, 174, 0.07);
+}
+
+.bracelet-bridge-warning {
+  margin-top: 9px;
+  color: #f0b28e;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.bracelet-battery-card {
+  margin-top: 12px;
+  padding: 14px 15px 12px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: rgba(30, 29, 31, 0.55);
+}
+
+.bracelet-battery-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #c2b7b3;
+  font-size: 10px;
+}
+
+.bracelet-battery-top > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.bracelet-battery-top > span svg {
+  color: #a1d6b4;
+}
+
+.bracelet-battery-top strong {
+  color: #c4e2ce;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bracelet-battery-card input[type="range"] {
+  width: 100%;
+  height: 3px;
+  display: block;
+  margin: 15px 0 10px;
+  border-radius: 5px;
+  appearance: none;
+  background: linear-gradient(to right, #9bcaab var(--battery-progress), #484344 var(--battery-progress));
+  cursor: pointer;
+}
+
+.bracelet-battery-card input[type="range"]::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  appearance: none;
+  border: 2px solid #211f20;
+  border-radius: 50%;
+  background: #b7dfc3;
+  box-shadow: 0 0 0 1px #a5cdb0;
+}
+
+.bracelet-battery-card input[type="range"]::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  border: 2px solid #211f20;
+  border-radius: 50%;
+  background: #b7dfc3;
+  box-shadow: 0 0 0 1px #a5cdb0;
+}
+
+.bracelet-battery-caption {
+  color: #817977;
+  font-size: 9px;
+}
+
+.bracelet-footnote {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 15px;
+  color: #817977;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.bracelet-footnote svg {
+  flex: 0 0 auto;
+  color: #b3948c;
+}
+
+.bracelet-visual {
+  overflow: hidden;
+  position: relative;
+  min-width: 0;
+  border: 1px solid rgba(232, 214, 205, 0.11);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(108, 75, 68, 0.16), transparent 52%),
+    linear-gradient(145deg, rgba(40, 37, 38, 0.94), rgba(25, 24, 26, 0.97));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+}
+
+.bracelet-visual-top {
+  position: absolute;
+  z-index: 3;
+  top: 21px;
+  right: 21px;
+  left: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.bracelet-visual-top > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bracelet-visual-top strong {
+  color: #e9dfdb;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.bracelet-rotate-button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(232, 214, 205, 0.14);
+  border-radius: 10px;
+  color: #c6afaa;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.rotating-icon {
+  animation: bracelet-spin 4s linear infinite;
+}
+
+.bracelet-render-area {
+  overflow: hidden;
+  position: relative;
+  height: clamp(480px, 55vw, 650px);
+  min-height: 430px;
+  margin-top: 42px;
+  touch-action: none;
+}
+
+.bracelet-scene {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.bracelet-scene:active {
+  cursor: grabbing;
+}
+
+.bracelet-scene canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bracelet-render-glow {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 390px;
+  height: 390px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(191, 130, 111, 0.14), rgba(131, 87, 77, 0.035) 48%, transparent 72%);
+  transform: translate(-50%, -50%);
+}
+
+.bracelet-render-ring {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(229, 192, 174, 0.07);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring-one {
+  width: 370px;
+  height: 370px;
+}
+
+.ring-two {
+  width: 480px;
+  height: 480px;
+  border-color: rgba(229, 192, 174, 0.045);
+}
+
+.bracelet-alert-wave {
+  position: absolute;
+  z-index: 1;
+  top: 48%;
+  left: 50%;
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgba(255, 129, 137, 0.44);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: bracelet-wave 2.4s ease-out infinite;
+}
+
+.wave-two {
+  animation-delay: 1.2s;
+}
+
+.bracelet-3d-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 22px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa09d;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.bracelet-live-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.alert-active .bracelet-live-dot {
+  background: #ff8992;
+  box-shadow: 0 0 12px rgba(255, 113, 123, 0.74);
+}
+
+.bracelet-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 0 24px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.bracelet-specs > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 15px;
+}
+
+.bracelet-specs > div > span {
+  position: absolute;
+  top: 14px;
+  right: 0;
+  color: #756b69;
+  font-size: 8px;
+}
+
+.bracelet-specs strong {
+  color: #ded4d0;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.bracelet-specs small {
+  color: #837a78;
+  font-size: 9px;
+}
+
+.bracelet-reference-note {
+  position: absolute;
+  right: 24px;
+  bottom: 6px;
+  color: #625b5a;
+  font-size: 8px;
+}
+
+.bracelet-toast {
+  position: fixed;
+  z-index: 20;
+  right: 24px;
+  bottom: 24px;
+  max-width: min(400px, calc(100% - 32px));
+  padding: 13px 16px;
+  border: 1px solid rgba(236, 202, 188, 0.18);
+  border-radius: 12px;
+  color: #f2e5df;
+  background: rgba(45, 39, 39, 0.96);
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.36);
+  font-size: 11px;
+  line-height: 1.5;
+  animation: bracelet-toast-in 180ms ease-out;
+}
+
+.bracelet-footer {
+  width: min(1320px, calc(100% - 80px));
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+  color: #716967;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+@keyframes bracelet-wave {
+  0% { opacity: 0.65; transform: translate(-50%, -50%) scale(0.55); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.8); }
+}
+
+@keyframes bracelet-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bracelet-toast-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .bracelet-topbar,
+  .bracelet-footer {
+    width: calc(100% - 40px);
+  }
+
+  .bracelet-layout {
+    width: calc(100% - 40px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .bracelet-copy h1 {
+    font-size: 43px;
+  }
+
+  .bracelet-visual {
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .bracelet-topbar {
+    width: calc(100% - 32px);
+    height: 65px;
+  }
+
+  .bracelet-prototype-tag {
+    display: none;
+  }
+
+  .bracelet-app-link {
+    padding: 9px;
+  }
+
+  .bracelet-app-link span {
+    display: none;
+  }
+
+  .bracelet-layout {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 32px;
+  }
+
+  .bracelet-copy {
+    padding-top: 0;
+  }
+
+  .bracelet-copy h1 {
+    margin-top: 18px;
+    font-size: 42px;
+  }
+
+  .bracelet-visual {
+    grid-row: 1;
+  }
+
+  .bracelet-render-area {
+    height: min(118vw, 540px);
+    min-height: 370px;
+  }
+
+  .ring-one {
+    width: 300px;
+    height: 300px;
+  }
+
+  .ring-two {
+    width: 400px;
+    height: 400px;
+  }
+
+  .bracelet-render-glow {
+    width: 320px;
+    height: 320px;
+  }
+
+  .bracelet-footer {
+    width: calc(100% - 32px);
+    min-height: 56px;
+    gap: 12px;
+    font-size: 7px;
+  }
+
+  .bracelet-footer span:last-child {
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bracelet-app *,
+  .bracelet-app *::before,
+  .bracelet-app *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.bracelet-topbar {
+  width: min(430px, calc(100% - 36px));
+  height: 72px;
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.bracelet-brand {
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.bracelet-brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bracelet-brand-copy small {
+  color: #c5a29a;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.bracelet-brand-copy strong {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.bracelet-brand-copy em {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px 5px;
+  border: 1px solid rgba(244, 160, 142, 0.24);
+  border-radius: 999px;
+  color: #d7ae9f;
+  background: rgba(244, 160, 142, 0.1);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  vertical-align: 2px;
+}
+
+.bracelet-topbar-right {
+  gap: 8px;
+}
+
+.bracelet-app-link {
+  height: 34px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 9px;
+}
+
+.bracelet-info-button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: #c9b8b1;
+  background: rgba(255, 255, 255, 0.045);
+  cursor: pointer;
+}
+
+.bracelet-info-button:hover,
+.bracelet-modal-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bracelet-layout {
+  width: min(430px, calc(100% - 36px));
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 16px 0 22px;
+}
+
+.bracelet-visual {
+  width: 100%;
+  order: -1;
+  border-radius: 25px;
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(171, 125, 107, 0.11), transparent 57%),
+    linear-gradient(145deg, rgba(27, 28, 33, 0.88), rgba(17, 18, 22, 0.92));
+}
+
+.bracelet-visual-top {
+  top: 17px;
+  right: 17px;
+  left: 19px;
+}
+
+.bracelet-visual-top strong {
+  font-size: 11px;
+}
+
+.bracelet-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid rgba(142, 214, 174, 0.18);
+  border-radius: 999px;
+  color: #a6d9b8;
+  background: rgba(142, 214, 174, 0.07);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.bracelet-live-tag > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #8ed6ae;
+  box-shadow: 0 0 9px rgba(142, 214, 174, 0.7);
+}
+
+.bracelet-render-area {
+  height: 430px;
+  min-height: 390px;
+  margin-top: 35px;
+}
+
+.bracelet-rotate-hint {
+  position: absolute;
+  z-index: 4;
+  top: 8px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: #d1c7c3;
+  background: rgba(255, 255, 255, 0.055);
+  font-size: 9px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.bracelet-rotate-hint svg {
+  color: #dec0af;
+}
+
+.bracelet-render-glow {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(222, 192, 175, 0.16), rgba(131, 87, 77, 0.04) 48%, transparent 72%);
+}
+
+.ring-one {
+  width: 280px;
+  height: 280px;
+}
+
+.ring-two {
+  width: 365px;
+  height: 365px;
+}
+
+.bracelet-3d-caption {
+  bottom: 15px;
+  font-size: 7px;
+}
+
+.bracelet-finish-panel {
+  margin: 0 12px 16px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.bracelet-finish-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #aaa09d;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+}
+
+.bracelet-auto-rotate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 5px;
+  border: 0;
+  border-radius: 6px;
+  color: #cfa393;
+  background: transparent;
+  font-family: inherit;
+  font-size: 8px;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.bracelet-auto-rotate:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bracelet-auto-rotate > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #696263;
+}
+
+.bracelet-auto-rotate > span.is-rotating {
+  background: #8ed6ae;
+  box-shadow: 0 0 8px rgba(142, 214, 174, 0.55);
+  animation: pulse-dot 1.7s ease-in-out infinite;
+}
+
+.bracelet-color-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+
+.bracelet-color-option {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.025);
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.bracelet-color-option:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.bracelet-color-option.selected {
+  border-color: rgba(222, 192, 175, 0.58);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.bracelet-color-option > span:last-child {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bracelet-color-option strong {
+  overflow: hidden;
+  color: #eee7e3;
+  font-size: 8px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bracelet-color-option small {
+  overflow: hidden;
+  color: #a69a96;
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bracelet-color-option.selected small {
+  color: #d5ad9e;
+}
+
+.bracelet-color-chip {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.bracelet-color-chip.rose {
+  border: 1px solid #dec0af;
+  background: linear-gradient(135deg, #c99e86, #edd6cb);
+  box-shadow: 0 0 0 2px rgba(222, 192, 175, 0.13);
+}
+
+.bracelet-color-chip.graphite {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #151619, #494a4f);
+}
+
+.bracelet-color-chip.silver {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #b8c0c8, #edf2f4);
+}
+
+.bracelet-specs {
+  margin: 0 12px;
+  padding: 13px 0 14px;
+  gap: 9px;
+}
+
+.bracelet-specs > div {
+  gap: 4px;
+  padding: 0;
+}
+
+.bracelet-specs > div > span {
+  display: none;
+}
+
+.bracelet-specs strong {
+  font-size: 8px;
+}
+
+.bracelet-specs small {
+  font-size: 7px;
+}
+
+.bracelet-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.bracelet-alert-card,
+.bracelet-controls,
+.bracelet-link-card,
+.bracelet-battery-card,
+.bracelet-footnote {
+  margin-top: 0;
+}
+
+.bracelet-alert-card {
+  padding: 12px;
+}
+
+.bracelet-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.bracelet-link-card {
+  padding: 13px;
+}
+
+.bracelet-battery-card {
+  padding: 12px 13px;
+}
+
+.bracelet-footnote {
+  margin: 1px 2px 0;
+}
+
+.bracelet-footer {
+  width: min(430px, calc(100% - 36px));
+  min-height: 42px;
+  font-size: 7px;
+  letter-spacing: 0.04em;
+}
+
+.bracelet-modal-backdrop {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(4, 4, 6, 0.72);
+  backdrop-filter: blur(9px);
+}
+
+.bracelet-info-modal {
+  position: relative;
+  width: min(410px, 100%);
+  padding: 25px;
+  border: 1px solid rgba(234, 214, 204, 0.15);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #282426, #19191d);
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.5);
+}
+
+.bracelet-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: #c9b8b1;
+  background: rgba(255, 255, 255, 0.045);
+  cursor: pointer;
+}
+
+.bracelet-info-modal h2 {
+  margin: 18px 0 8px;
+  color: #f2e9e5;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 23px;
+  letter-spacing: -0.04em;
+}
+
+.bracelet-info-modal > p {
+  margin: 0 0 19px;
+  color: #aaa09d;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.bracelet-info-spec {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: #d4c8c2;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.bracelet-info-spec svg {
+  flex: 0 0 auto;
+  color: #d9a998;
+}
+
+@media (max-width: 700px) {
+  .bracelet-topbar {
+    width: calc(100% - 32px);
+    height: 66px;
+  }
+
+  .bracelet-layout {
+    width: calc(100% - 32px);
+    gap: 11px;
+    padding-top: 13px;
+  }
+
+  .bracelet-render-area {
+    height: min(108vw, 430px);
+    min-height: 360px;
+  }
+
+  .bracelet-render-glow {
+    width: min(85vw, 350px);
+    height: min(85vw, 350px);
+  }
+
+  .ring-one {
+    width: min(68vw, 280px);
+    height: min(68vw, 280px);
+  }
+
+  .ring-two {
+    width: min(90vw, 365px);
+    height: min(90vw, 365px);
+  }
+
+  .bracelet-footer {
+    width: calc(100% - 32px);
+  }
+}
