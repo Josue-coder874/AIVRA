@@ -122,7 +122,7 @@ export const Screen1Dashboard: React.FC<Screen1Props> = ({ onNavigate, braceletC
             </div>
 
             {/* Micro-Metrics Data Strip */}
-            <div className="grid grid-cols-3 gap-2 pt-1">
+            <div className="grid grid-cols-2 gap-2 pt-1 sm:grid-cols-4">
               <div className="flex flex-col p-2.5 rounded-lg bg-surface-container-low shadow-sm">
                 <div className="flex items-center gap-1 text-on-surface-variant mb-1">
                   <span className="material-symbols-outlined text-[16px] text-secondary">
@@ -149,9 +149,24 @@ export const Screen1Dashboard: React.FC<Screen1Props> = ({ onNavigate, braceletC
                     Sensores
                   </span>
                 </div>
-                <span className="font-label-lg text-label-lg text-on-surface font-semibold">3/3</span>
+                <span className="font-label-lg text-label-lg text-on-surface font-semibold">4/4</span>
                 <span className="font-label-sm text-label-sm text-tertiary text-[10px]">
                   100% Operativos
+                </span>
+              </div>
+
+              <div className="flex flex-col p-2.5 rounded-lg bg-surface-container-low shadow-sm">
+                <div className="flex items-center gap-1 text-on-surface-variant mb-1">
+                  <span className="material-symbols-outlined text-[16px] text-secondary">
+                    humidity_percentage
+                  </span>
+                  <span className="font-label-sm text-label-sm text-[10px] uppercase tracking-wider">
+                    Humedad
+                  </span>
+                </div>
+                <span className="font-label-lg text-label-lg text-on-surface font-semibold">46% RH</span>
+                <span className="font-label-sm text-label-sm text-on-surface-variant text-[10px]">
+                  Lectura simulada
                 </span>
               </div>
 

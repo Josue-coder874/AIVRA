@@ -15,6 +15,26 @@ export const APP_THEMES = {
     label: 'Bosque',
     swatch: '#10221c',
   },
+  pink: {
+    label: 'Rosado',
+    swatch: '#3a1429',
+  },
+  coral: {
+    label: 'Coral',
+    swatch: '#3b1918',
+  },
+  electricBlue: {
+    label: 'Azul eléctrico',
+    swatch: '#111d3d',
+  },
+  turquoise: {
+    label: 'Turquesa',
+    swatch: '#102d32',
+  },
+  amber: {
+    label: 'Ámbar',
+    swatch: '#33230f',
+  },
 } as const;
 
 export type AppTheme = keyof typeof APP_THEMES;

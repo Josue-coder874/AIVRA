@@ -129,6 +129,81 @@
   --color-on-background: #e0f1e8;
 }
 
+.aivra-app[data-theme="pink"] {
+  --color-surface: #3a1429;
+  --color-surface-dim: #2b0e1e;
+  --color-surface-bright: #63344d;
+  --color-surface-container-lowest: #260b1a;
+  --color-surface-container-low: #41182f;
+  --color-surface-container: #481c34;
+  --color-surface-container-high: #54243e;
+  --color-surface-container-highest: #612e4a;
+  --color-surface-variant: #612e4a;
+  --color-background: #3a1429;
+  --color-on-surface: #ffe7f1;
+  --color-on-background: #ffe7f1;
+}
+
+.aivra-app[data-theme="coral"] {
+  --color-surface: #3b1918;
+  --color-surface-dim: #2c1111;
+  --color-surface-bright: #633b39;
+  --color-surface-container-lowest: #270d0d;
+  --color-surface-container-low: #421d1c;
+  --color-surface-container: #492120;
+  --color-surface-container-high: #552a28;
+  --color-surface-container-highest: #623432;
+  --color-surface-variant: #623432;
+  --color-background: #3b1918;
+  --color-on-surface: #ffebe7;
+  --color-on-background: #ffebe7;
+}
+
+.aivra-app[data-theme="electricBlue"] {
+  --color-surface: #111d3d;
+  --color-surface-dim: #0b142d;
+  --color-surface-bright: #35446d;
+  --color-surface-container-lowest: #081027;
+  --color-surface-container-low: #162348;
+  --color-surface-container: #1b2950;
+  --color-surface-container-high: #25345f;
+  --color-surface-container-highest: #30406d;
+  --color-surface-variant: #30406d;
+  --color-background: #111d3d;
+  --color-on-surface: #e5eaff;
+  --color-on-background: #e5eaff;
+}
+
+.aivra-app[data-theme="turquoise"] {
+  --color-surface: #102d32;
+  --color-surface-dim: #0a2126;
+  --color-surface-bright: #34545a;
+  --color-surface-container-lowest: #071c20;
+  --color-surface-container-low: #153338;
+  --color-surface-container: #1a393e;
+  --color-surface-container-high: #244449;
+  --color-surface-container-highest: #2f5056;
+  --color-surface-variant: #2f5056;
+  --color-background: #102d32;
+  --color-on-surface: #ddf7f8;
+  --color-on-background: #ddf7f8;
+}
+
+.aivra-app[data-theme="amber"] {
+  --color-surface: #33230f;
+  --color-surface-dim: #261a0a;
+  --color-surface-bright: #57452d;
+  --color-surface-container-lowest: #211607;
+  --color-surface-container-low: #392811;
+  --color-surface-container: #3f2e16;
+  --color-surface-container-high: #4a371d;
+  --color-surface-container-highest: #574326;
+  --color-surface-variant: #574326;
+  --color-background: #33230f;
+  --color-on-surface: #fff0d8;
+  --color-on-background: #fff0d8;
+}
+
 /* Material Symbols sizing and alignment */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
